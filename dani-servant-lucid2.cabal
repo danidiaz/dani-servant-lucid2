@@ -2,7 +2,10 @@ cabal-version:      3.4
 name:               dani-servant-lucid2
 version:            0.1.0.0
 synopsis:           Servant support for lucid2
--- description:
+description:
+  Servant support for lucid2.
+  .
+  'HTML' content type which will use `ToHtml` class.
 homepage:           https://github.com/danidiaz/dani-servant-lucid2
 license:            BSD-3-Clause
 license-file:       LICENSE
