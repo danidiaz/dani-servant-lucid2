@@ -10,6 +10,10 @@ import Lucid (Html, ToHtml (..), renderBS)
 import Network.HTTP.Types.Header
 import Servant.Server
 
+-- | Build a 'ServerError' with an HTML body.
+--
+-- Note that 'ServerError's, despite their name, can represent any type of
+-- response, including successful ones.
 htmlResponse ::
   -- | HTTP response status code
   Int ->
@@ -18,7 +22,7 @@ htmlResponse ::
   ServerError
 htmlResponse = htmlResponse'
 
--- | More general version of 'htmlResponse', which can have worse type
+-- | More general version of 'htmlResponse', that can have worse type
 -- inference.
 htmlResponse' ::
   (ToHtml a) =>
