@@ -19,23 +19,24 @@ common basic
     ghc-options: -Wall
     default-language: GHC2021
     build-depends:    
-        base >=4.9 && <5
+        base >=4.9 && <5,
+        lucid2 >= 0.0.20230706 && < 0.1,
 
 library
     import: basic
     exposed-modules:  
-        MyLib
-    reexported-modules: 
         Servant.API.ContentTypes.Lucid
     -- other-modules:
     -- other-extensions:
     hs-source-dirs:   lib
     build-depends:    
-        dani-servant-lucid2:api
+        servant >= 0.20.1 && < 0.21,
 
-library api
+library server
     import: basic
     exposed-modules:  
-        Servant.API.ContentTypes.Lucid
-    hs-source-dirs: lib-api
+        Servant.Server.Lucid
+    hs-source-dirs: lib-server
+    build-depends:    
+        servant-server >= 0.20 && < 0.21,
     visibility: public
