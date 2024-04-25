@@ -15,14 +15,27 @@ extra-doc-files:    CHANGELOG.md
 -- extra-source-files:
 tested-with: GHC==9.8.1 GHC==9.2.8
 
-common warnings
+common basic
     ghc-options: -Wall
+    default-language: GHC2021
+    build-depends:    
+        base >=4.9 && <5
 
 library
-    import:           warnings
-    exposed-modules:  MyLib
+    import: basic
+    exposed-modules:  
+        MyLib
+    reexported-modules: 
+        Servant.API.ContentTypes.Lucid
     -- other-modules:
     -- other-extensions:
-    build-depends:    base >=4.9 && <5
     hs-source-dirs:   lib
-    default-language: GHC2021
+    build-depends:    
+        dani-servant-lucid2:api
+
+library api
+    import: basic
+    exposed-modules:  
+        Servant.API.ContentTypes.Lucid
+    hs-source-dirs: lib-api
+    visibility: public
