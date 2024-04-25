@@ -23,14 +23,13 @@ common basic
     default-language: GHC2021
     build-depends:    
         base >=4.9 && <5,
+        http-media >= 0.8.1 && < 0.9,
         lucid2 >= 0.0.20230706 && < 0.1,
 
 library
     import: basic
     exposed-modules:  
         Servant.API.ContentTypes.Lucid
-    -- other-modules:
-    -- other-extensions:
     hs-source-dirs:   lib
     build-depends:    
         servant >= 0.20.1 && < 0.21,
@@ -42,4 +41,5 @@ library server
     hs-source-dirs: lib-server
     build-depends:    
         servant-server >= 0.20 && < 0.21,
+        http-types >= 0.12.4 && < 0.13,
     visibility: public
