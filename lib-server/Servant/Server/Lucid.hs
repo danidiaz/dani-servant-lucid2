@@ -1,23 +1,37 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module Servant.Server.Lucid (toHtmlResponse) where
+module Servant.Server.Lucid
+  ( htmlResponse,
+    htmlResponse',
+  )
+where
 
-import Lucid (ToHtml (..), renderBS)
+import Lucid (Html, ToHtml (..), renderBS)
 import Network.HTTP.Types.Header
 import Servant.Server
 
-toHtmlResponse ::
+htmlResponse ::
+  -- | HTTP response status code
+  Int ->
+  [Header] ->
+  Html () ->
+  ServerError
+htmlResponse = htmlResponse'
+
+-- | More general version of 'htmlResponse', which can have worse type
+-- inference.
+htmlResponse' ::
   (ToHtml a) =>
   -- | HTTP response status code
   Int ->
   [Header] ->
   a ->
   ServerError
-toHtmlResponse errHTTPCode extraHeaders a =
+htmlResponse' errHTTPCode extraHeaders a =
   ServerError
     { errHTTPCode,
       errReasonPhrase = "",
       errBody = renderBS (toHtml a),
       errHeaders =
-        [("Content-Type", "text/html; charset=utf-8")] ++ extraHeaders
+        [("Content-Type", "text/html;charset=utf-8")] ++ extraHeaders
     }

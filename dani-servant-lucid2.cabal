@@ -43,3 +43,14 @@ library server
         servant-server >= 0.20 && < 0.21,
         http-types >= 0.12.4 && < 0.13,
     visibility: public
+
+test-suite tests
+    import:           basic
+    type:             exitcode-stdio-1.0
+    hs-source-dirs:   test
+    main-is:          tests.hs
+    build-depends:    
+        lucid2,
+        dani-servant-lucid2,
+        dani-servant-lucid2:server,
+        servant-server >= 0.20 && < 0.21,
