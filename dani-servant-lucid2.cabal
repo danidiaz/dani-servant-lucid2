@@ -1,0 +1,28 @@
+cabal-version:      3.4
+name:               dani-servant-lucid2
+version:            0.1.0.0
+synopsis:           Servant support for lucid2
+-- description:
+homepage:           https://github.com/danidiaz/dani-servant-lucid2
+license:            BSD-3-Clause
+license-file:       LICENSE
+author:             Daniel Díaz
+maintainer:         diaz_carrete@yahoo.com
+-- copyright:
+category:           Web
+build-type:         Simple
+extra-doc-files:    CHANGELOG.md
+-- extra-source-files:
+tested-with: GHC==9.8.1 GHC==9.2.8
+
+common warnings
+    ghc-options: -Wall
+
+library
+    import:           warnings
+    exposed-modules:  MyLib
+    -- other-modules:
+    -- other-extensions:
+    build-depends:    base ^>=4.19.0.0
+    hs-source-dirs:   lib
+    default-language: GHC2021
