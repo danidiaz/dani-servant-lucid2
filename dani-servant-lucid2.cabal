@@ -4,8 +4,8 @@ version:            0.1.0.0
 synopsis:           Servant support for lucid2
 description:
   Servant support for lucid2.
-  .
-  'HTML' content type which will use `ToHtml` class.
+   
+  'HTML' content type backed by the `ToHtml` typeclass.
 homepage:           https://github.com/danidiaz/dani-servant-lucid2
 license:            BSD-3-Clause
 license-file:       LICENSE
